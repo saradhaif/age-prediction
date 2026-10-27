@@ -14,29 +14,20 @@ def load_model():
 
 model = load_model()
 
-# Choose between uploading and taking a photo
+# uploading and taking a photo tabs
 tab1, tab2 = st.tabs(["Upload Picture", "Take Photo"])
 
 with tab1:
-    uploaded_file = st.file_uploader(
-        "Choose a picture",
-        type=["jpg", "jpeg", "png"],
-        key="upload"
-    )
+    uploaded_file = st.file_uploader("Choose a picture", type=["jpg", "jpeg", "png"], key="upload")
 
 with tab2:
-    camera_picture = st.camera_input(
-        "Take a picture",
-        key="camera"
-    )
+    camera_picture = st.camera_input("Take a picture", key="camera")
 
-# Get the selected picture
 picture = uploaded_file if uploaded_file is not None else camera_picture
 
-# Predict age
+# Predicting
 if picture is not None:
     image = Image.open(picture).convert("RGB")
-
     st.image(image, caption="Your picture")
 
     # Prepare the image for the model
@@ -47,9 +38,4 @@ if picture is not None:
     # Make the prediction
     prediction = model.predict(image, verbose=0)
     age = float(prediction[0][0])
-
     st.success(f"Estimated age: {age:.0f} years")
-
-    st.caption(
-        "This is an AI estimate and may not reflect actual age."
-    )
