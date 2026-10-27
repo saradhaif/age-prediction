@@ -5,28 +5,28 @@ import numpy as np
 from PIL import Image
 
 st.title("Age Prediction 📸")
+st.write("Upload a picture to estimate your age.")
 
-# Load the trained model
 @st.cache_resource
 def load_model():
     return tf.keras.models.load_model("age-model.keras")
 
 model = load_model()
 
-# Open camera
-picture = st.camera_input("Take a picture of your face")
+uploaded_file = st.file_uploader(
+    "Choose a picture",
+    type=["jpg", "jpeg", "png"]
+)
 
-if picture is not None:
-    image = Image.open(picture).convert("RGB")
-    st.image(image)
+if uploaded_file is not None:
+    image = Image.open(uploaded_file).convert("RGB")
+    st.image(image, caption="Uploaded picture")
 
-    # Prepare image for the model
     image = image.resize((48, 48))
     image = np.array(image).astype("float32") / 255.0
     image = np.expand_dims(image, axis=0)
 
-    # Predict age
     prediction = model.predict(image, verbose=0)
     age = prediction[0][0]
 
-    st.success(f"Your estimated age is {age:.0f} years!")
+    st.success(f"Estimated age: {age:.0f} years")
