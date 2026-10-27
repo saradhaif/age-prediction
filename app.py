@@ -18,6 +18,10 @@ face_detector = cv2.CascadeClassifier(
     cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
 )
 
+if face_detector.empty():
+    st.error("Face detector could not be loaded.")
+    st.stop()
+
 tab1, tab2 = st.tabs(["Upload Picture", "Take Photo"])
 
 with tab1:
