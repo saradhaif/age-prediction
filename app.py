@@ -10,7 +10,7 @@ st.write("Upload a picture or take a photo to estimate your age.")
 # Load the trained model
 @st.cache_resource
 def load_model():
-    return tf.keras.models.load_model("age_model.keras")
+    return tf.keras.models.load_model("age-model.keras")
 
 model = load_model()
 
