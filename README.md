@@ -24,7 +24,7 @@ The project includes image loading and preprocessing, dataset preparation, neura
 
 ## How to Use the Application
 1. Open the deployed application using the link below.
-2. Upload a facial image.
+2. Upload a facial image or take a picture of your self.
 3. Run the prediction.
 4. View the estimated age returned by the model.
 
