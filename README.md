@@ -35,4 +35,4 @@ The project includes image loading and preprocessing, dataset preparation, neura
 The predicted age is an estimate and may differ from a person's actual age. Prediction accuracy can be affected by image quality, lighting, facial expressions, and the diversity of the training dataset.
 
 ## Author
-Developed as part of a Data Science project.
+Sara Dhaif
