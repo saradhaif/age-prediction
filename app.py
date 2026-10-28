@@ -4,7 +4,7 @@ import tensorflow as tf
 import numpy as np
 from PIL import Image
 
-st.title("Age Prediction 📸")
+st.title("Age Prediction")
 st.write("Upload a picture or take a photo to estimate your age.")
 
 # Load the trained model
